@@ -1,0 +1,76 @@
+$primary: #0d6efd;
+$secondary: #484848;
+$light: #e5e5e5;
+$white: #ffffff;
+body {
+	margin: 0;
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	background-color: $light;
+	font-family: system-ui, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: $secondary;
+}
+.checkbox-container {
+	padding: 18px;
+	border: 1px solid $light;
+	background-color: $white;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 250px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.heading {
+	margin-inline: 0;
+	margin-block: 6px;
+}
+.checkbox-group {
+	border: 1px solid $light;
+	padding: 10px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.checkbox-group.checked {
+	background-color: $primary;
+	box-shadow: rgba(13, 110, 253, 0.25) 0px 8px 24px;
+}
+
+// input[type="checkbox"] {
+// 	visibility: hidden;
+// }
+
+// input[type="checkbox"] ~ label {
+// 	position: relative;
+// }
+
+input[type="checkbox"] ~ label:before {
+	content: "";
+	position: absolute;
+	border: 1px solid $light;
+	height: 14px;
+	font-size: 12px;
+	aspect-ratio: 1;
+	top: 0;
+	left: -26px;
+	border-radius: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $white;
+}
+
+input[type="checkbox"]:checked ~ label {
+	color: $white;
+}
+
+input[type="checkbox"]:checked ~ label:before {
+	content: "✔";
+	color: $primary;
+}

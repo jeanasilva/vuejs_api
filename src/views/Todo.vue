@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <input type="checkbox" :checked="todo.completed == 'S'" @change="toogleStatus">
-        {{ todo.title }} - {{ todo.body }} - {{ todo.completed }} - {{ todo.date }}
-        <router-link :to="{name: 'todos.edit', params: {id: todo.identify}}"> Edit</router-link>
-        <!-- <router-link :to="{name: 'todos.delete', params: {id: todo.identify}}"> Delete</router-link> -->
-        <a href="#" @click.prevent="deleteTodo"> Delete </a>
+    <div class="checkbox-container" >
+        <h2 class="heading">{{ todo.title }}</h2>
+            <div class="checkbox-group">     
+                <input type="checkbox" :checked="todo.completed == 'S'" @change="toogleStatus">
+                {{ todo.body }}
+                <router-link :to="{name: 'todos.edit', params: {id: todo.identify}}"><i class="fa-solid fa-pen-to-square"></i></router-link>
+                <a href="#" @click.prevent="deleteTodo"><i class="fa-solid fa-trash-can"></i></a>
+            </div>
     </div>
 </template>
 

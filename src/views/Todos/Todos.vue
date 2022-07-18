@@ -1,7 +1,7 @@
 <template>
     <h1>
         Lista de Tarefas
-        <router-link :to="{name: 'todos.create'}">+</router-link>
+        <router-link :to="{name: 'todos.create'}"><i class="fas fa-plus"></i></router-link>
     </h1>
 
     <div v-show="loading">
@@ -14,7 +14,7 @@
         </li>
     </ul>
 
-    <input type="text" v-model="name">
+    <!-- <input type="text" v-model="name"> -->
 </template>
 
 <script>
