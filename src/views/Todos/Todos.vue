@@ -1,7 +1,7 @@
 <template>
     <h1>
         Lista de Tarefas
-        <router-link :to="{name: 'todos-create'}">+</router-link>
+        <router-link :to="{name: 'todos.create'}">+</router-link>
     </h1>
 
     <div v-show="loading">
@@ -10,9 +10,10 @@
 
     <ul>
         <li v-for="todo in todos" :key="todo.identifify">
-            {{ todo.title }}
+            <todo :todo="todo" @todoDeleted="removeTodoList" @todoUpdated="todoUpdated"/>
         </li>
     </ul>
+
     <input type="text" v-model="name">
 </template>
 
@@ -20,6 +21,7 @@
 
 import { onMounted, ref } from 'vue'
 import TodoService from '@/services/todos.services'
+import Todo from '../Todo.vue'
 
 export default {
 
@@ -38,11 +40,24 @@ export default {
                 .finally(() => loading.value = false)
         })
 
+        const removeTodoList = (todo) => {
+            todos.value.splice(todos.value.indexOf(todo), 1)
+        }
+        
+        const todoUpdated = (todo) => {
+            todos.value[todos.value.indexOf(todo)] = todo
+        }
+
         return {
             todos,
-            loading
+            loading,
+            removeTodoList,
+            todoUpdated
         }
-    }
+    },
+    components: {
+        Todo
+    },
 }
 
 </script>
